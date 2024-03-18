@@ -1,45 +1,115 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% My favorite packages %%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% comment
+\usepackage{comment}
+
+% smart space for my commands
+\usepackage{xspace}
+
+% subcaption
+\makeatletter
+\let\MYcaption\@makecaption
+\makeatother
+\usepackage{subcaption}
+\captionsetup{compatibility=false}      % 必要に応じて
+\makeatletter
+\let\@makecaption\MYcaption
+\makeatother
+
+% for equation
+\usepackage{amsmath,amssymb,amsfonts}
+
+% table
 \usepackage{booktabs}
-\usepackage{cite}
-\usepackage{color}
-\usepackage{colortbl}
-\usepackage{multicol,multirow}
-\usepackage{datetime}
-\usepackage[dvipdfmx]{graphicx}
-\usepackage{hhline}
-\usepackage{ifthen}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{tabularx}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\newcommand{\tblhead}[2]{\multicolumn{1}{C{#1em}}{{\bf \tt #2}}}
+		
+
+% figure
+\usepackage{graphicx}
+\usepackage{wrapfig}
+
+% algorithm
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+%% for Readablity
+% hyperlink
+\usepackage{xcolor}
+\usepackage[luatex,pdfencoding=auto]{hyperref}
+\hypersetup{
+    colorlinks=false,
+    linkbordercolor={0 0 0},
+    urlbordercolor={0 0 0},
+    pdfborder={0 0 0}
+} 
+
 \usepackage{url}
-\definecolor{gray}{rgb}{0.86,0.86,0.86}
+\usepackage{cite}
 
-% \ReviewedDate[jp or en]
-\newcommand{\MyReviewedDate}[1][jp]{
-    \ifthenelse{\equal{#1}{jp}}{
-        （\the\year 年 \the\month 月 \the\day 日閲覧．）
-    }{\ifthenelse{\equal{#1}{en}}{
-         (reviewed on \today.)
-    }{
-        \color[red]{jp もしくは en を引数としてください．}
-    }}
+% bookmark on PDF
+\usepackage{bookmark}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% My commands & strings %%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% orcid
+\newcommand{\orcid}[1]{\href{https://orcid.org/#1}{\includegraphics[scale=0.07]{mylatextools/myicons/orcid.svg}}}
+
+% format 
+\newcommand{\bftf}{\bfseries \tt }
+
+% access date
+\newcommand{\adate}{DAYth MONTH, YEAR}
+\newcommand{\accessed}{accessed on \date}
+\newcommand{\itemizesettings}{
+    \setlength{\itemsep}{0pt}%
+    \setlength{\parskip}{0pt}%
 }
 
-% commands for creating a table
-\newcommand{\MyTbl}[6][htbp]{
-    \begin{table}[#1]
-        \centering
-        \caption{#3} \label{#4}
-        \begin{tabular}{#2} \toprule[1pt]
-            #5 \\\midrule\midrule
-            #6 \bottomrule[1pt]
-        \end{tabular}
-    \end{table}
-}
+%% strings
+% e.g. / i.e.
+\newcommand{\eg}{e.g.\xspace}
+\newcommand{\ig}{i.e.\xspace}
 
-% commands for creating a header in a table
-% \newcommand{\MyCreateHeader}[2][y]{
-%     \ifthenelse{\equal{#1}{y}}{\hline}{} #2\\ \ifthenelse{\equal{#1}{y}}{\hline\hline}{}
-% }
-\newcommand{\MyTblHeaderCell}[1]{
-    \multicolumn{1}{c}{\textbf{\tt #1}}
-}
-\newcommand{\MyTblRow}[1]{
-    #1\\
-}
+% for references
+%\newcommand{\Secstr   }{Section}
+%\newcommand{\Subsecstr}{Section}
+%\newcommand{\Figstr   }{Fig.}
+%\newcommand{\Figsstr  }{Figs.}
+%\newcommand{\Tblstr   }{Table}
+%\newcommand{\Tblsstr  }{Tables}
+%\newcommand{\Defstr   }{Definition}
+%\newcommand{\Theostr  }{Theorem}
+%\newcommand{\Eqstr    }{Eq.}
+\newcommand{\Secstr   }{節}
+\newcommand{\Subsecstr}{項}
+\newcommand{\Figstr   }{図}
+\newcommand{\Figsstr  }{図}
+\newcommand{\Tblstr   }{表}
+\newcommand{\Tblsstr  }{表}
+\newcommand{\Defstr   }{定義}
+\newcommand{\Theostr  }{定理}
+\newcommand{\Eqstr    }{式}
+%\newcommand{\Sec   }[1]{\Secstr\xspace#1}
+\newcommand{\Sec   }[1]{#1\xspace\Secstr}
+%\newcommand{\Subsec}[1]{\Subsecstr\xspace#1}
+\newcommand{\Subsec}[1]{#1\xspace\Subsecstr}
+\newcommand{\Fig   }[1]{\Figstr\xspace#1}
+\newcommand{\Figs  }[1]{\Figsstr\xspace#1}
+\newcommand{\Tbl   }[1]{\Tblstr\xspace#1}
+\newcommand{\Tbls  }[1]{\Tblsstr\xspace#1}
+\newcommand{\Def   }[1]{\Defstr\xspace#1}
+\newcommand{\Theo  }[1]{\Theostr\xspace#1}
+\newcommand{\Eq    }[1]{\Eqstr\xspace#1}
+
+% word with symbol
+\newcommand{\naive}{na\"{i}ve\xspace}
+\newcommand{\Naive}{Na\"{i}ve\xspace}
